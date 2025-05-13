@@ -8,8 +8,13 @@ on:
 
 jobs:
   TruffleHog:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4  
-      - name: TruffleHog OSS
-        uses: trufflesecurity/trufflehog@v3.88.29      
+    - name: Checkout code
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+    - name: Secret Scanning
+      uses: trufflesecurity/trufflehog@main
+      with:
+        extra_args: --results=verified,unknown
