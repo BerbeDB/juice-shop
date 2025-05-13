@@ -1,0 +1,15 @@
+name: Truffle Hog
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+  TruffleHog:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4  
+      - name: TruffleHog OSS
+        uses: trufflesecurity/trufflehog@v3.88.29      
